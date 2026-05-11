@@ -1,10 +1,10 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ?? 'https://forceweaver.com';
 const blogUrl = process.env.NEXT_PUBLIC_BLOG_URL ?? 'https://blog.forceweaver.com';
 const appUrl = 'https://app.forceweaver.com';
 
@@ -12,9 +12,13 @@ export default function CompanyHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  const isActive = (path: string) => {
-    if (path.startsWith('/#')) return false;
-    return pathname === path;
+  const isActive = (href: string) => {
+    if (href.includes('#')) return false;
+    try {
+      return new URL(href).pathname === pathname;
+    } catch {
+      return pathname === href;
+    }
   };
 
   return (
@@ -28,24 +32,27 @@ export default function CompanyHeader() {
             height={32}
             className="rounded-lg"
           />
-          <Link href="/" className="text-xl font-bold text-indigo-dye hover:text-celestial-blue transition-colors">
+          <a
+            href={siteUrl}
+            className="text-xl font-bold text-indigo-dye hover:text-celestial-blue transition-colors"
+          >
             ForceWeaver
-          </Link>
+          </a>
         </div>
 
         <nav className="hidden md:flex items-center gap-6 lg:gap-8">
-          <Link
-            href="/#products"
+          <a
+            href={`${siteUrl}/#products`}
             className="text-indigo-dye font-medium hover:text-celestial-blue transition-colors"
           >
             Solutions
-          </Link>
-          <Link
-            href="/#about"
+          </a>
+          <a
+            href={`${siteUrl}/#about`}
             className="text-indigo-dye font-medium hover:text-celestial-blue transition-colors"
           >
             About
-          </Link>
+          </a>
           <a
             href={blogUrl}
             className="font-medium text-indigo-dye hover:text-celestial-blue transition-colors"
@@ -78,24 +85,24 @@ export default function CompanyHeader() {
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-gray-200/50 bg-white/95 backdrop-blur-md">
           <nav className="container mx-auto px-6 py-4 flex flex-col space-y-4">
-            <Link
-              href="/#products"
+            <a
+              href={`${siteUrl}/#products`}
               className="text-indigo-dye font-medium hover:text-celestial-blue transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               Solutions
-            </Link>
-            <Link
-              href="/#about"
+            </a>
+            <a
+              href={`${siteUrl}/#about`}
               className="text-indigo-dye font-medium hover:text-celestial-blue transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               About
-            </Link>
+            </a>
             <a
               href={blogUrl}
               className={`font-medium hover:text-celestial-blue transition-colors ${
-                isActive('/blog') ? 'text-celestial-blue' : 'text-indigo-dye'
+                isActive(blogUrl) ? 'text-celestial-blue' : 'text-indigo-dye'
               }`}
               onClick={() => setMobileMenuOpen(false)}
             >
