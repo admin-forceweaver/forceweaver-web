@@ -12,6 +12,7 @@ const config: Config = {
       colors: {
         'indigo-dye': '#173e63',
         'celestial-blue': '#00a1e0',
+        'lavender-blush': '#f0e2e7',
       },
     },
   },

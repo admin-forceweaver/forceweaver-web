@@ -21,7 +21,7 @@ export default function Footer({ variant = 'company' }: FooterProps) {
             <div>
               <h3 className="font-bold text-indigo-dye mb-3">ForceWeaver</h3>
               <p className="text-sm text-indigo-dye/60">
-                Tools and content for Salesforce Revenue Cloud practitioners.
+                Brand home for ForceWeaver—apps, RevSnap, and the VS Code extension for Revenue Cloud teams.
               </p>
             </div>
 
@@ -58,7 +58,7 @@ export default function Footer({ variant = 'company' }: FooterProps) {
                     rel="noopener noreferrer"
                     className="hover:text-celestial-blue transition-colors"
                   >
-                    VS Code extensions
+                    Install VS Code extension
                   </a>
                 </li>
               </ul>

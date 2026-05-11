@@ -12,4 +12,16 @@
   .badge-purple {
     @apply inline-block rounded-full bg-purple-100 text-purple-800 px-2 py-0.5 font-medium;
   }
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-md bg-celestial-blue px-6 py-3 text-base font-semibold text-white shadow-lg transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-celestial-blue;
+  }
+  .btn-primary-sm {
+    @apply inline-flex items-center justify-center rounded-md bg-celestial-blue px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-celestial-blue;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-6 py-3 text-base font-semibold text-indigo-dye shadow-sm transition hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-celestial-blue;
+  }
+  .btn-secondary-sm {
+    @apply inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-indigo-dye shadow-sm transition hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-celestial-blue;
+  }
 }

@@ -95,6 +95,12 @@ export function generateMetadata(config: SEOConfig): Metadata {
   return metadata;
 }
 
+const solutionOrigins = [
+  'https://app.forceweaver.com',
+  'https://revsnap.forceweaver.com',
+  'https://marketplace.visualstudio.com/publishers/forceweaver',
+] as const;
+
 export function generateOrganizationSchema() {
   return {
     '@context': 'https://schema.org',
@@ -103,12 +109,86 @@ export function generateOrganizationSchema() {
     url: siteOrigin(),
     logo: `${siteOrigin()}/forceweaver-logo.png`,
     description: 'Professional tools and content for Salesforce Revenue Cloud teams.',
-    sameAs: ['https://marketplace.visualstudio.com/publishers/forceweaver'],
+    sameAs: [...solutionOrigins],
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Customer Support',
       url: siteOrigin(),
     },
+  };
+}
+
+export function generateWebSiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: siteName,
+    url: siteOrigin(),
+    publisher: {
+      '@type': 'Organization',
+      name: siteTitle,
+      url: siteOrigin(),
+    },
+  };
+}
+
+export function generateSolutionsItemListSchema() {
+  const solutions = [
+    {
+      name: 'ForceWeaver App',
+      url: 'https://app.forceweaver.com',
+      description: 'Free hosted app for Revenue Cloud practitioners.',
+    },
+    {
+      name: 'RevSnap',
+      url: 'https://revsnap.forceweaver.com',
+      description: 'B2B SaaS for Revenue Cloud deployment and change workflows.',
+    },
+    {
+      name: 'ForceWeaver VS Code extension',
+      url: 'https://marketplace.visualstudio.com/publishers/forceweaver',
+      description: 'Install the extension from the Visual Studio Marketplace.',
+    },
+  ];
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'ForceWeaver solutions',
+    description: 'Products and channels from ForceWeaver.',
+    numberOfItems: solutions.length,
+    itemListElement: solutions.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      description: item.description,
+      item: item.url,
+    })),
+  };
+}
+
+function stripJsonLdContext<T extends Record<string, unknown>>(node: T): Omit<T, '@context'> {
+  const copy = { ...node };
+  delete copy['@context'];
+  return copy as Omit<T, '@context'>;
+}
+
+function organizationNodeForGraph() {
+  return stripJsonLdContext(generateOrganizationSchema() as Record<string, unknown>);
+}
+
+function webSiteNodeForGraph() {
+  return stripJsonLdContext(generateWebSiteSchema() as Record<string, unknown>);
+}
+
+function solutionsItemListNodeForGraph() {
+  return stripJsonLdContext(generateSolutionsItemListSchema() as Record<string, unknown>);
+}
+
+export function generateHomePageJsonLdGraph() {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [organizationNodeForGraph(), webSiteNodeForGraph(), solutionsItemListNodeForGraph()],
   };
 }
 

@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 const blogUrl = process.env.NEXT_PUBLIC_BLOG_URL ?? 'https://blog.forceweaver.com';
+const appUrl = 'https://app.forceweaver.com';
 
 export default function CompanyHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -32,7 +33,7 @@ export default function CompanyHeader() {
           </Link>
         </div>
 
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
           <Link
             href="/#products"
             className="text-indigo-dye font-medium hover:text-celestial-blue transition-colors"
@@ -50,6 +51,9 @@ export default function CompanyHeader() {
             className="font-medium text-indigo-dye hover:text-celestial-blue transition-colors"
           >
             Blog
+          </a>
+          <a href={appUrl} className="btn-primary-sm shrink-0">
+            Open app
           </a>
         </nav>
 
@@ -96,6 +100,13 @@ export default function CompanyHeader() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Blog
+            </a>
+            <a
+              href={appUrl}
+              className="btn-primary-sm w-fit"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Open app
             </a>
           </nav>
         </div>
