@@ -97,7 +97,6 @@ export function generateMetadata(config: SEOConfig): Metadata {
 
 const solutionOrigins = [
   'https://app.forceweaver.com',
-  'https://revsnap.forceweaver.com',
   'https://marketplace.visualstudio.com/publishers/forceweaver',
 ] as const;
 
@@ -137,17 +136,20 @@ export function generateSolutionsItemListSchema() {
     {
       name: 'ForceWeaver App',
       url: 'https://app.forceweaver.com',
-      description: 'Free hosted app for Revenue Cloud practitioners.',
+      description:
+        'Free browser-based toolkit for Salesforce Revenue Cloud and Core Cloud practitioners.',
     },
     {
-      name: 'RevSnap',
-      url: 'https://revsnap.forceweaver.com',
-      description: 'B2B SaaS for Revenue Cloud deployment and change workflows.',
+      name: 'RevCloud Blueprint',
+      url: 'https://marketplace.visualstudio.com/items?itemName=forceweaver.revcloud-blueprint',
+      description:
+        'VS Code extension for Revenue Cloud pricing test automation with CI/CD integration.',
     },
     {
-      name: 'ForceWeaver VS Code extension',
-      url: 'https://marketplace.visualstudio.com/publishers/forceweaver',
-      description: 'Install the extension from the Visual Studio Marketplace.',
+      name: 'CML Deployer — Advanced Configurator',
+      url: 'https://marketplace.visualstudio.com/items?itemName=forceweaver.cml-migrator-advanced',
+      description:
+        'VS Code extension for automating Advanced Configurator (ExpressionSet) migrations between Salesforce orgs.',
     },
   ];
 

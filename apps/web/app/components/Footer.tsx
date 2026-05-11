@@ -21,7 +21,7 @@ export default function Footer({ variant = 'company' }: FooterProps) {
             <div>
               <h3 className="font-bold text-indigo-dye mb-3">ForceWeaver</h3>
               <p className="text-sm text-indigo-dye/60">
-                Brand home for ForceWeaver—apps, RevSnap, and the VS Code extension for Revenue Cloud teams.
+                Purpose-built tools for Salesforce Revenue Cloud and Core Cloud practitioners.
               </p>
             </div>
 
@@ -45,20 +45,22 @@ export default function Footer({ variant = 'company' }: FooterProps) {
                 </li>
                 <li>
                   <a
-                    href="https://revsnap.forceweaver.com"
-                    className="hover:text-celestial-blue transition-colors"
-                  >
-                    RevSnap
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://marketplace.visualstudio.com/publishers/forceweaver"
+                    href="https://marketplace.visualstudio.com/items?itemName=forceweaver.revcloud-blueprint"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-celestial-blue transition-colors"
                   >
-                    Install VS Code extension
+                    RevCloud Blueprint
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://marketplace.visualstudio.com/items?itemName=forceweaver.cml-migrator-advanced"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-celestial-blue transition-colors"
+                  >
+                    CML Deployer
                   </a>
                 </li>
               </ul>
@@ -103,7 +105,7 @@ export default function Footer({ variant = 'company' }: FooterProps) {
 
           <div className="border-t border-gray-200/50 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-indigo-dye/60">
             <p>&copy; {new Date().getFullYear()} ForceWeaver. All rights reserved.</p>
-            <p className="mt-2 md:mt-0">Built for Revenue Cloud teams</p>
+            <p className="mt-2 md:mt-0">Built for Salesforce practitioners</p>
           </div>
         </div>
       </footer>

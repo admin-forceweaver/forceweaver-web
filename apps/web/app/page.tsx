@@ -8,17 +8,20 @@ const defaultOg = '/forceweaver-logo.png';
 const ogHomeImage = process.env.NEXT_PUBLIC_OG_HOME_IMAGE ?? defaultOg;
 
 export const metadata = buildMeta({
-  title: 'ForceWeaver — Revenue Cloud app, RevSnap & VS Code',
+  title: 'ForceWeaver — Salesforce Revenue Cloud & Core Cloud tools',
   description:
-    'ForceWeaver is the brand home for Salesforce Revenue Cloud tools: the free ForceWeaver App, RevSnap B2B SaaS, and a VS Code extension from the Marketplace—plus the blog for practitioners.',
+    'ForceWeaver builds free tools for Salesforce practitioners: a browser-based toolkit for Revenue Cloud and Core Cloud, plus two VS Code extensions—RevCloud Blueprint for pricing test automation and CML Deployer for Advanced Configurator migrations.',
   keywords: [
     'ForceWeaver',
     'Salesforce Revenue Cloud',
-    'CPQ',
+    'Salesforce CPQ',
     'Salesforce Billing',
-    'RevSnap',
+    'Advanced Configurator',
+    'CML migrator',
+    'RevCloud Blueprint',
+    'Revenue Cloud pricing',
     'ForceWeaver App',
-    'VS Code',
+    'VS Code Salesforce extension',
     'Visual Studio Marketplace',
   ],
   canonical: `${siteOrigin()}/`,
