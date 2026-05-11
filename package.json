@@ -12,7 +12,8 @@
     "clean": "npm run clean --workspaces --if-present",
     "install:all": "npm install --workspaces",
     "dev:web": "npm run dev --workspace=@apps/web",
-    "build:web": "npm run build --workspace=@apps/web"
+    "build:web": "npm run build --workspace=@apps/web",
+    "import:wp-posts": "node scripts/import-wordpress-posts.mjs"
   },
   "repository": {
     "type": "git",

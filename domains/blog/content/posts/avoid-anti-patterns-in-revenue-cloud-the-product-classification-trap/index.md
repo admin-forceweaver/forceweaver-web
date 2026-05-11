@@ -56,7 +56,7 @@ Imagine configuring a custom laptop. Your catalog has a classification called **
 5. The configurator shows an error such as: *Server rack mounts cannot be sold with laptops.*
 6. Because the whole System Add-ons section is grayed out by the warranty rule, the user cannot uncheck the rack mount. They are deadlocked and often must abandon the quote.
 
-## The fix: architectural boundaries
+## The fix: Architectural boundaries
 
 This pattern shows why grouping products into classifications is a catalog design decision, not only a visual or attribute-grouping choice.
 

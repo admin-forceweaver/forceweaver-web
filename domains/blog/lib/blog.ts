@@ -11,30 +11,34 @@ import rehypeStringify from 'rehype-stringify';
 const postsDirectory = path.join(process.cwd(), '..', '..', 'domains', 'blog', 'content', 'posts');
 const publicImagesDirectory = path.join(process.cwd(), 'public', 'blog', 'images');
 
-// Helper function to copy images from post folder to public directory
+const IMAGE_EXTENSIONS = new Set(['.webp', '.jpg', '.jpeg', '.png', '.gif', '.svg']);
+
+function copyImageFilesRecursive(sourceDir: string, targetRoot: string, relativeBase = ''): void {
+  if (!fs.existsSync(sourceDir)) return;
+  const entries = fs.readdirSync(sourceDir, { withFileTypes: true });
+  for (const entry of entries) {
+    const rel = path.join(relativeBase, entry.name);
+    const sourcePath = path.join(sourceDir, entry.name);
+    if (entry.isDirectory()) {
+      copyImageFilesRecursive(sourcePath, targetRoot, rel);
+      continue;
+    }
+    const ext = path.extname(entry.name).toLowerCase();
+    if (!IMAGE_EXTENSIONS.has(ext)) continue;
+    const targetPath = path.join(targetRoot, rel);
+    fs.mkdirSync(path.dirname(targetPath), { recursive: true });
+    fs.copyFileSync(sourcePath, targetPath);
+  }
+}
+
+// Copy images from post folder (including subfolders like `images/`) to public/blog/images/{slug}/
 function copyPostImages(slug: string): void {
   try {
     const postFolder = path.join(postsDirectory, slug);
     const targetFolder = path.join(publicImagesDirectory, slug);
-
-    // Create target directory if it doesn't exist
-    if (!fs.existsSync(targetFolder)) {
-      fs.mkdirSync(targetFolder, { recursive: true });
-    }
-
-    // Get all files in the post folder
-    const files = fs.readdirSync(postFolder);
-    
-    // Copy image files (webp, jpg, jpeg, png, gif, svg)
-    const imageExtensions = ['.webp', '.jpg', '.jpeg', '.png', '.gif', '.svg'];
-    files.forEach(file => {
-      const ext = path.extname(file).toLowerCase();
-      if (imageExtensions.includes(ext)) {
-        const sourcePath = path.join(postFolder, file);
-        const targetPath = path.join(targetFolder, file);
-        fs.copyFileSync(sourcePath, targetPath);
-      }
-    });
+    if (!fs.existsSync(postFolder)) return;
+    fs.mkdirSync(targetFolder, { recursive: true });
+    copyImageFilesRecursive(postFolder, targetFolder);
   } catch (error) {
     console.warn(`Could not copy images for post ${slug}:`, error);
   }
