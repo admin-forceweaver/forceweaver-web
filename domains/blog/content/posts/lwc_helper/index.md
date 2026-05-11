@@ -6,7 +6,7 @@ excerpt: >-
   Back in time when we were creating Lightning components on aura framework,
   developers were hooked on with the helper methods. We all were told that all
   the reusable code should go into helper methods.
-category: Tutorial
+category: Development
 tags:
   - aura
   - equivalent

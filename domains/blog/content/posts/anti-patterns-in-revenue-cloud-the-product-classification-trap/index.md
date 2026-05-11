@@ -1,5 +1,5 @@
 ---
-title: "Avoid Anti-Patterns in Revenue Cloud: The Product Classification Trap"
+title: "Anti-Patterns in Revenue Cloud: The Product Classification Trap"
 date: "2026-05-11"
 author: ""
 excerpt: "How shared Product Classifications and CML exclude rules can lock the Advanced Configurator UI—and how to architect classifications so users never get stuck."

@@ -6,7 +6,7 @@ excerpt: >-
   Most of us might have opened a lightning component from a quick action button
   by embedding the component in the quick action. Its a nice feature that helped
   us to pop up UI elements from a record page. However the com…
-category: Tutorial
+category: Development
 tags:
   - isurladdressable
   - lex-component

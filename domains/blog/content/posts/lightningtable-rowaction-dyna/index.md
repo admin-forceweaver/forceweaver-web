@@ -6,7 +6,7 @@ excerpt: >-
   Salesforce has made developer’s life easy by introducing lightning:datatable
   from API version 41.0. Even since then there have been a lot of enhancement to
   the component with more and more attributes.
-category: Tutorial
+category: Development
 tags:
   - dynamic
   - dynamic-table

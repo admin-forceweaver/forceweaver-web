@@ -5,7 +5,7 @@ author: ''
 excerpt: >-
   Many times we may get a scenario where a lwc will be placed in community for
   external users and also in the app builder so that its used by internal users.
-category: Tutorial
+category: Development
 tags:
   - accessed
   - dynamic

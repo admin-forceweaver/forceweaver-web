@@ -5,7 +5,7 @@ author: ''
 excerpt: >-
   A headless quick action executes custom code in a Lightning web component.
   Unlike a screen action, a headless action doesn’t open a modal window.
-category: Tutorial
+category: Development
 tags:
   - action
   - approval
