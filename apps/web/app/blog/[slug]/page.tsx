@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { BlogPostBody } from '@/components/blog/BlogPostBody';
 import { getAllPostSlugs, getPostBySlug } from '@domains/blog/lib/blog';
 import { generateMetadata as buildMeta, generateArticleSchema } from '@/lib/seo';
 import { blogOrigin, siteOrigin } from '@/lib/site';
@@ -75,9 +76,9 @@ export default async function BlogPostPage({ params }: Props) {
             <Image src={post.featuredImage} alt={post.title} fill className="object-cover" priority />
           </div>
         )}
-        <div
-          className="prose prose-lg max-w-none prose-headings:text-indigo-dye prose-a:text-celestial-blue"
-          dangerouslySetInnerHTML={{ __html: post.content }}
+        <BlogPostBody
+          html={post.content}
+          className="blog-prose prose prose-lg max-w-none prose-headings:text-indigo-dye prose-a:text-celestial-blue prose-code:before:content-none prose-code:after:content-none"
         />
       </article>
     </>
