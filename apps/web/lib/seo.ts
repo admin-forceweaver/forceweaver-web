@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { siteOrigin } from './site';
 
 export interface SEOConfig {
   title: string;
@@ -15,9 +16,9 @@ export interface SEOConfig {
   };
 }
 
-const defaultOGImage = '/images/toolkit-brand.png';
-const siteTitle = 'Forceweaver';
-const siteName = 'Forceweaver - Professional Salesforce Solutions';
+const defaultOGImage = '/forceweaver-logo.png';
+const siteTitle = 'ForceWeaver';
+const siteName = 'ForceWeaver — Salesforce Revenue Cloud tools';
 
 export function generateMetadata(config: SEOConfig): Metadata {
   const {
@@ -31,18 +32,20 @@ export function generateMetadata(config: SEOConfig): Metadata {
   } = config;
 
   const fullTitle = title.includes(siteTitle) ? title : `${title} | ${siteTitle}`;
-  
+
   const metadata: Metadata = {
     title: fullTitle,
     description,
     keywords: keywords.length > 0 ? keywords.join(', ') : undefined,
-    authors: [{ name: 'Forceweaver', url: 'https://forceweaver.com' }],
-    creator: 'Forceweaver',
-    publisher: 'Forceweaver',
-    metadataBase: new URL('https://forceweaver.com'),
-    alternates: canonical ? {
-      canonical,
-    } : undefined,
+    authors: [{ name: 'ForceWeaver', url: siteOrigin() }],
+    creator: 'ForceWeaver',
+    publisher: 'ForceWeaver',
+    metadataBase: new URL(siteOrigin()),
+    alternates: canonical
+      ? {
+          canonical,
+        }
+      : undefined,
     openGraph: {
       title: fullTitle,
       description,
@@ -58,12 +61,14 @@ export function generateMetadata(config: SEOConfig): Metadata {
       ],
       locale: 'en_US',
       type: ogType,
-      ...(article && ogType === 'article' ? {
-        publishedTime: article.publishedTime,
-        modifiedTime: article.modifiedTime,
-        authors: article.author ? [article.author] : undefined,
-        tags: article.tags,
-      } : {}),
+      ...(article && ogType === 'article'
+        ? {
+            publishedTime: article.publishedTime,
+            modifiedTime: article.modifiedTime,
+            authors: article.author ? [article.author] : undefined,
+            tags: article.tags,
+          }
+        : {}),
     },
     twitter: {
       card: 'summary_large_image',
@@ -90,48 +95,20 @@ export function generateMetadata(config: SEOConfig): Metadata {
   return metadata;
 }
 
-// JSON-LD Structured Data Generators
-
 export function generateOrganizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Forceweaver',
-    url: 'https://forceweaver.com',
-    logo: 'https://forceweaver.com/forceweaver-logo.png',
-    description: 'Professional tools and solutions for Salesforce developers and consultants',
-    sameAs: [
-      'https://marketplace.visualstudio.com/publishers/forceweaver',
-    ],
+    name: 'ForceWeaver',
+    url: siteOrigin(),
+    logo: `${siteOrigin()}/forceweaver-logo.png`,
+    description: 'Professional tools and content for Salesforce Revenue Cloud teams.',
+    sameAs: ['https://marketplace.visualstudio.com/publishers/forceweaver'],
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Customer Support',
-      url: 'https://forceweaver.com',
+      url: siteOrigin(),
     },
-  };
-}
-
-export function generateSoftwareApplicationSchema() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
-    name: 'Rev Cloud Blueprint',
-    applicationCategory: 'DeveloperApplication',
-    operatingSystem: 'Windows, macOS, Linux',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '5.0',
-      ratingCount: '1',
-    },
-    description: 'Automated testing framework for Salesforce Revenue Cloud. Catch pricing regressions instantly and deploy with total confidence.',
-    url: 'https://blueprint.forceweaver.com',
-    downloadUrl: 'https://marketplace.visualstudio.com/items?itemName=forceweaver.revcloud-blueprint',
-    screenshot: 'https://blueprint.forceweaver.com/images/toolkit-brand.png',
   };
 }
 
@@ -154,14 +131,14 @@ export function generateArticleSchema(article: {
     dateModified: article.dateModified || article.datePublished,
     author: {
       '@type': 'Person',
-      name: article.author || 'Forceweaver Team',
+      name: article.author || 'ForceWeaver Team',
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Forceweaver',
+      name: 'ForceWeaver',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://forceweaver.com/forceweaver-logo.png',
+        url: `${siteOrigin()}/forceweaver-logo.png`,
       },
     },
     mainEntityOfPage: {
@@ -183,4 +160,3 @@ export function generateBreadcrumbSchema(items: { name: string; url: string }[])
     })),
   };
 }
-

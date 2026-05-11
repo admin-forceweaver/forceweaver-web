@@ -2,21 +2,10 @@
 
 import { useState, useMemo } from 'react';
 import BlogCard from '@domains/blog/components/BlogCard';
-
-interface BlogPost {
-  slug: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  author: string;
-  category: string;
-  tags: string[];
-  readingTime: number;
-  featuredImage?: string;
-}
+import type { BlogPostMetadata } from '@domains/blog/lib/blog';
 
 interface BlogListProps {
-  allPosts: BlogPost[];
+  allPosts: BlogPostMetadata[];
   categories: string[];
 }
 

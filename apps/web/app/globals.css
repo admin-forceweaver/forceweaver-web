@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .glass-header {
+    @apply bg-white/80 backdrop-blur-md;
+  }
+  .glass-card {
+    @apply bg-white/90 backdrop-blur border border-gray-200/60 shadow-sm;
+  }
+  .badge-purple {
+    @apply inline-block rounded-full bg-purple-100 text-purple-800 px-2 py-0.5 font-medium;
+  }
+}

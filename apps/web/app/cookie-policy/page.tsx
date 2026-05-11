@@ -1,9 +1,11 @@
 import { Metadata } from 'next';
 import { getCookiesByCategory } from '@/lib/consent/cookieRegistry';
+import CompanyHeader from '@domains/company/components/CompanyHeader';
+import Footer from '@/app/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy | Rev Cloud Blueprint',
-  description: 'Learn about how we use cookies and similar technologies on Rev Cloud Blueprint.',
+  title: 'Cookie Policy',
+  description: 'How ForceWeaver sites use cookies and similar technologies.',
 };
 
 export default function CookiePolicyPage() {
@@ -11,7 +13,9 @@ export default function CookiePolicyPage() {
   const analyticsCookies = getCookiesByCategory('analytics');
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="flex min-h-screen flex-col bg-gray-50">
+      <CompanyHeader />
+      <div className="flex-1 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
           Cookie Policy
@@ -255,6 +259,8 @@ export default function CookiePolicyPage() {
           </p>
         </section>
       </div>
+      </div>
+      <Footer variant="company" />
     </div>
   );
 }

@@ -2,29 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Run Extension",
-      "type": "extensionHost",
+      "name": "web: Next dev",
+      "type": "node",
       "request": "launch",
-      "args": [
-        "--extensionDevelopmentPath=${workspaceFolder}"
-      ],
-      "outFiles": [
-        "${workspaceFolder}/out/**/*.js"
-      ],
-      "preLaunchTask": "npm: compile"
-    },
-    {
-      "name": "Extension Tests",
-      "type": "extensionHost",
-      "request": "launch",
-      "args": [
-        "--extensionDevelopmentPath=${workspaceFolder}",
-        "--extensionTestsPath=${workspaceFolder}/out/test/suite/index"
-      ],
-      "outFiles": [
-        "${workspaceFolder}/out/test/**/*.js"
-      ],
-      "preLaunchTask": "npm: compile"
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev:web"],
+      "console": "integratedTerminal"
     }
   ]
 }

@@ -1,21 +1,26 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+const repoDomains = resolve(__dirname, '../../domains');
+const repoPackages = resolve(__dirname, '../../packages');
 
 const nextConfig: NextConfig = {
-  /* config options here */
   webpack: (config) => {
-    // Add aliases for monorepo paths
-    // During build, domains and packages are copied to apps/web directory
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@domains': resolve(__dirname, './domains'),
-      '@packages': resolve(__dirname, './packages'),
+      '@domains': repoDomains,
+      '@packages': repoPackages,
     };
     return config;
+  },
+  turbopack: {
+    resolveAlias: {
+      '@domains': repoDomains,
+      '@packages': repoPackages,
+    },
   },
 };
 

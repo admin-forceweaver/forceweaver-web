@@ -1,17 +1,14 @@
 {
   "name": "@apps/web",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "prebuild": "node scripts/prebuild.js",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
-    "@supabase/ssr": "^0.7.0",
-    "@supabase/supabase-js": "^2.57.4",
     "@types/js-cookie": "^3.0.6",
     "@vercel/analytics": "^1.5.0",
     "gray-matter": "^4.0.3",

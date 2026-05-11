@@ -41,7 +41,5 @@ yarn-error.log*
 next-env.d.ts
 .env*.local
 
-# monorepo copies (copied during build)
-/domains
-/packages
-/temp-domains
+# Generated from domains/blog markdown at build time
+/public/blog/images/

@@ -2,44 +2,24 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "npm: compile",
+      "label": "web: dev",
       "type": "npm",
-      "script": "compile",
+      "script": "dev:web",
       "group": "build",
       "presentation": {
-        "panel": "dedicated",
-        "reveal": "never"
-      },
-      "problemMatcher": [
-        "$tsc"
-      ]
-    },
-    {
-      "label": "npm: watch",
-      "type": "npm",
-      "script": "watch",
-      "isBackground": true,
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "presentation": {
-        "panel": "dedicated",
-        "reveal": "never"
-      },
-      "problemMatcher": [
-        "$tsc-watch"
-      ]
-    },
-    {
-      "label": "npm: test",
-      "type": "npm",
-      "script": "test",
-      "group": "test",
-      "presentation": {
-        "panel": "dedicated",
         "reveal": "always"
-      }
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "web: build",
+      "type": "npm",
+      "script": "build:web",
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": ["$eslint-stylish"]
     }
   ]
 }

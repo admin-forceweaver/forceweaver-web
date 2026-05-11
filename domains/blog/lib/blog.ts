@@ -85,31 +85,34 @@ function calculateReadingTime(content: string): number {
   return Math.ceil(wordCount / wordsPerMinute);
 }
 
-// Get all blog post slugs
-export function getAllPostSlugs(): string[] {
+function listPostSlugsOnDisk(): string[] {
   try {
     const entries = fs.readdirSync(postsDirectory, { withFileTypes: true });
     return entries
-      .filter(entry => {
-        // Check if it's a directory and contains an index.md file
+      .filter((entry) => {
         if (entry.isDirectory()) {
           const indexPath = path.join(postsDirectory, entry.name, 'index.md');
           return fs.existsSync(indexPath);
         }
         return false;
       })
-      .map(entry => entry.name)
-      .filter(name => name !== 'README.md'); // Exclude README
+      .map((entry) => entry.name)
+      .filter((name) => name !== 'README.md');
   } catch {
     console.warn('Blog directory not found, returning empty array');
     return [];
   }
 }
 
+/** Published post slugs only (for sitemaps and static generation). */
+export function getAllPostSlugs(): string[] {
+  return getAllPosts().map((p) => p.slug);
+}
+
 // Get all posts metadata (for listing page)
 export function getAllPosts(): BlogPostMetadata[] {
   try {
-    const slugs = getAllPostSlugs();
+    const slugs = listPostSlugsOnDisk();
     const posts = slugs
       .map(slug => {
         // Copy images to public directory
@@ -157,6 +160,10 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const fullPath = path.join(postsDirectory, slug, 'index.md');
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
+
+    if (data.published === false) {
+      return null;
+    }
 
     // Transform relative image paths in content to absolute paths
     const contentWithAbsolutePaths = transformImagePaths(content, slug);
