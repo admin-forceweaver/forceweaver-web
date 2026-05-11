@@ -1,0 +1,24 @@
+# Forceweaver Robots.txt
+# Allow all search engines to crawl all pages
+
+User-agent: *
+Allow: /
+
+# Disallow admin pages from indexing
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://forceweaver.com/sitemap.xml
+Sitemap: https://blueprint.forceweaver.com/sitemap.xml
+
+# Allow specific bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl delay for polite crawling
+Crawl-delay: 1
+

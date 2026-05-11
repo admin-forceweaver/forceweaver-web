@@ -1,0 +1,2 @@
+# This file ensures Git tracks the apps directory even when empty
+# Apps directory will contain the VS Code extension and future web application

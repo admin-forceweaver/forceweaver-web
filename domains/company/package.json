@@ -1,0 +1,14 @@
+{
+  "name": "@domains/company",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "next": "^15.5.3",
+    "@packages/ui": "*"
+  }
+}
+

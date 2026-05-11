@@ -1,0 +1,2 @@
+# This file ensures Git tracks the packages directory even when empty
+# Packages directory will contain shared libraries and types

@@ -1,0 +1,14 @@
+.vscode/**
+.vscode-test/**
+src/**
+tsconfig.json
+webpack.config.js
+jest.config.js
+**/*.map
+.gitignore
+node_modules/**
+out/**
+coverage/**
+temp/**
+test-workspace/**
+*.vsix
