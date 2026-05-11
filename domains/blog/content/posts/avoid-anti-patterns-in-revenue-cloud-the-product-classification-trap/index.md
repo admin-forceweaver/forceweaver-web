@@ -10,11 +10,11 @@ featuredImage: "feature-image.webp"
 
 In the Salesforce Revenue Cloud Advanced Configurator, there is a specific situation that can bring a configuration to a standstill. It occurs when a user triggers an error they cannot fix because the UI has disabled the necessary controls.
 
-As technical architects, we often treat Product Classifications as a way to organize the screen. Those classifications also define the boundaries of your Constraint Modeling Language (CML) rules. If you are not careful with catalog architecture, you can create a **shared classification trap**: a deadlock where validation fails and the user cannot correct their selection.
+As technical architects, we often treat Product Classifications as a way to group the products. Most of us overlook to the fact that those classifications also define the boundaries of your Constraint Modeling Language (CML) rules. If you are not careful with catalog architecture, you can create a **shared classification trap**: a deadlock where validation fails and the user cannot correct their selection.
 
 ## The mechanics of the trap
 
-This situation appears when an unintended product is effectively locked because it shares a Product Classification with another product that has a CML exclude (or similar) rule applied.
+This situation appears when an unintended product is effectively locked because it shares a Product Classification with another product that has a CML exclude (disable) rule applied.
 
 If a user selects an incompatible product in that group and triggers a validation error, a shared exclude rule can gray out the entire section. The user cannot save because of the error, and they cannot remove the problematic product because the checkbox is disabled.
 
@@ -36,7 +36,7 @@ When a CML exclude rule fires for one product, the engine can apply a UI treatme
 }
 ```
 
-Because `uiTreatmentTarget` is the shared **component** (the classification group), the engine can lock the checkbox for every product in that group—not only the product you meant to constrain.
+Because `uiTreatmentTarget` is the shared component (the classification group), the engine will lock the checkbox for every product in that group—not only the product you meant to constrain.
 
 ## Example: the laptop quote
 
@@ -52,13 +52,13 @@ Imagine configuring a custom laptop. Your catalog has a classification called **
 1. The system adds the standard warranty.
 2. To stop users from removing it, CML applies an exclude rule on the warranty.
 3. The API locks the entire **System Add-ons** classification component.
-4. A user adds **Server rack mount**.
+4. A user unintentionally adds **Server rack mount**.
 5. The configurator shows an error such as: *Server rack mounts cannot be sold with laptops.*
-6. Because the whole **System Add-ons** section is grayed out by the warranty rule, the user cannot uncheck the rack mount. They are deadlocked and often must abandon the quote.
+6. Because the whole System Add-ons section is grayed out by the warranty rule, the user cannot uncheck the rack mount. They are deadlocked and often must abandon the quote.
 
 ## The fix: architectural boundaries
 
-This pattern shows why grouping products into classifications is a **catalog design decision**, not only a visual or attribute-grouping choice.
+This pattern shows why grouping products into classifications is a catalog design decision, not only a visual or attribute-grouping choice.
 
 Product Classifications define the scope of CML rules when those rules target components. To avoid these lockouts:
 
