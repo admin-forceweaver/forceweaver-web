@@ -19,6 +19,7 @@ tags:
   - salesforce
   - whitelisted-url-for-redirects
 featuredImage: images/spring20changesetfeature.png
+status: published
 ---
 Changesets are salesforce’s native way of transferring customization/configuration from one org to another. Change sets can contain only modifications you can make through the Setup menu- which are supported by the metadata. You can’t deploy data (For e, g: List of contacts). Change sets contain information about the org. They don’t contain data, such as records.
 

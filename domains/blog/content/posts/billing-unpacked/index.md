@@ -1,13 +1,21 @@
 ---
-title: "Inside Salesforce Revenue Cloud: The Billing Process — Unpacked"
-date: "2025-04-11"
-author: ""
-excerpt: "A step-by-step breakdown of the Salesforce Revenue Cloud billing process, from the setup of Billing Policies and Treatments to the final generation of Billing Schedules upon order activation."
-category: "Revenue Cloud"
-tags: ["Revenue Cloud", "Billing", "Salesforce", "CPQ", "Automation"]
-featuredImage: "feature-image.webp"
+title: 'Inside Salesforce Revenue Cloud: The Billing Process — Unpacked'
+date: '2025-04-11'
+author: ''
+excerpt: >-
+  A step-by-step breakdown of the Salesforce Revenue Cloud billing process, from
+  the setup of Billing Policies and Treatments to the final generation of
+  Billing Schedules upon order activation.
+category: Revenue Cloud
+tags:
+  - Revenue Cloud
+  - Billing
+  - Salesforce
+  - CPQ
+  - Automation
+featuredImage: feature-image.webp
+status: published
 ---
-
 This article breaks down how a billing configuration flows from setup to execution in Salesforce Revenue Cloud, covering Billing Policies, Treatments, and Treatment Items, all the way to Billing Schedule generation upon order activation.
 
 ![Diagram showing the end-to-end flow of the billing process.](billing-process-flow.webp)

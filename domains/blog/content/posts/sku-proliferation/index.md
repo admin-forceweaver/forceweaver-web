@@ -1,14 +1,21 @@
 ---
-title: "Taming the SKU Beast: How Salesforce Revenue Cloud Solves SKU Proliferation"
-date: "2025-02-06"
-author: ""
-excerpt: "Discover how SKU proliferation creates chaos for businesses and learn how Salesforce Revenue Cloud solves this challenge with its advanced Product Catalog Management."
-category: "Revenue Cloud"
-tags: ["Revenue Cloud", "CPQ", "SKU Proliferation", "Product Catalog", "Salesforce"]
-featuredImage: "feature-image.webp"
+title: 'Taming the SKU Beast: How Salesforce Revenue Cloud Solves SKU Proliferation'
+date: '2025-02-06'
+author: ''
+excerpt: >-
+  Discover how SKU proliferation creates chaos for businesses and learn how
+  Salesforce Revenue Cloud solves this challenge with its advanced Product
+  Catalog Management.
+category: Revenue Cloud
+tags:
+  - Revenue Cloud
+  - CPQ
+  - SKU Proliferation
+  - Product Catalog
+  - Salesforce
+featuredImage: feature-image.webp
+status: published
 ---
-
-
 ## The Hidden Chaos of SKU Proliferation
 
 Meet Alex, a pricing manager at a fast-growing enterprise. His company sells mobile phones, laptops, and smart devices, each available in multiple configurations — different storage options, colors, and payment models (one-time purchase vs. subscription). What started as a simple, organized product catalog soon turned into an inventory nightmare.

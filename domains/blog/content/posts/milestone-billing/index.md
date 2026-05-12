@@ -1,14 +1,21 @@
 ---
-title: "Milestone Billing in Salesforce Revenue Cloud"
-date: "2025-04-05"
-author: ""
-excerpt: "Learn how Milestone Billing transforms service-based billing by aligning invoicing with project progress, enhancing customer trust and improving revenue predictability."
-category: "Revenue Cloud"
-tags: ["Revenue Cloud", "Billing", "Salesforce", "Professional Services", "CPQ"]
-featuredImage: "feature-image.webp"
+title: Milestone Billing in Salesforce Revenue Cloud
+date: '2025-04-05'
+author: ''
+excerpt: >-
+  Learn how Milestone Billing transforms service-based billing by aligning
+  invoicing with project progress, enhancing customer trust and improving
+  revenue predictability.
+category: Revenue Cloud
+tags:
+  - Revenue Cloud
+  - Billing
+  - Salesforce
+  - Professional Services
+  - CPQ
+featuredImage: feature-image.webp
+status: published
 ---
-
-
 For service-based industries, flexible billing models are a necessity, not just an advantage. Traditional billing methods often fall short for professional services projects or milestone-based engagements. This is where Milestone Billing in Salesforce Revenue Cloud comes in, offering precise control over when and how customers are billed.
 
 ## Why Milestone Billing?

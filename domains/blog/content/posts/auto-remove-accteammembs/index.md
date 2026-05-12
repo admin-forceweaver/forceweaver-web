@@ -17,6 +17,7 @@ tags:
   - teams
   - winter-20
 featuredImage: images/featureimage2.png
+status: published
 ---
 Teams – a powerful feature in salesforce by which two or members collaborate and work together on Account/Opportunity/Cases and help each other to close deals much faster or service a customer issue effectively. This may involve complex relationships and Account Team is no exception to it. Starting from Winter’20, Salesforce allows us to create custom field, buttons, links validation rules, triggers, process builders, lightning flows on Account Team Member object. We could add the custom fields on the Account multi-line editor as well.
 

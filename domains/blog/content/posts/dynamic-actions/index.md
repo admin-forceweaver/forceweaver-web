@@ -13,6 +13,7 @@ tags:
   - quick-action
   - salesforce-lightning
 featuredImage: images/dynamicaction_featureimage.png
+status: published
 ---
 #### **Introduction**
 

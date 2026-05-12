@@ -14,6 +14,7 @@ tags:
   - run-time
   - run-time-action
 featuredImage: images/lightningtableaction_feature-1.png
+status: published
 ---
 Salesforce has made developer’s life easy by introducing lightning:datatable from API version 41.0. Even since then there have been a lot of enhancement to the component with more and more attributes. In this blog, we will look at, how, using ‘onrowaction’ attribute we could create actions on the fly for the row that the user has chosen. These actions are user created and hence we can include the required business logic to perform on the specific rows.
 

@@ -1,13 +1,18 @@
 ---
-title: "Stop Trapping Your Users: Avoid UI Deadlocks in ARM Product Configurator"
-date: "2026-05-11"
-author: "Rohit"
-excerpt: "How a shared Classification group in CML can lock users in a validation error they cannot resolve, and how to fix it."
-category: "Revenue Cloud"
-tags: ["Salesforce", "Revenue Cloud", "CML", "Configurator"]
-published: false
+title: 'Stop Trapping Your Users: Avoid UI Deadlocks in ARM Product Configurator'
+date: '2026-05-11'
+author: Rohit
+excerpt: >-
+  How a shared Classification group in CML can lock users in a validation error
+  they cannot resolve, and how to fix it.
+category: Revenue Cloud
+tags:
+  - Salesforce
+  - Revenue Cloud
+  - CML
+  - Configurator
+status: draft
 ---
-
 ### Stop Trapping Your Users: Avoid UI Deadlocks in ARM Product Configurator
 
 If you’ve spent any time building in Agentforce Revenue Management’s Advanced Configurator, you know that Configuration Modeling Language (CML) is incredibly powerful. But if you aren't careful with your catalog architecture, that power can accidentally trap your users in a "UI Deadlock."

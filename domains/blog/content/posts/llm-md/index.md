@@ -1,13 +1,20 @@
 ---
-title: "Why AI Agents Speak Markdown (But Think in JSON)"
-date: "2025-11-29"
-author: "Rohit Radhakrishnan"
-excerpt: "AI coding tools love Markdown, but that's just a mask. Discover the 'Dual Brain' architecture where agents speak to you in readable text but strictly think in JSON code to get the job done."
-category: "AI"
-tags: ["LLM", "Context Engineering", "AI Agent", "Markdown"]
-featuredImage: "feature-image.png"
+title: Why AI Agents Speak Markdown (But Think in JSON)
+date: '2025-11-29'
+author: Rohit Radhakrishnan
+excerpt: >-
+  AI coding tools love Markdown, but that's just a mask. Discover the 'Dual
+  Brain' architecture where agents speak to you in readable text but strictly
+  think in JSON code to get the job done.
+category: AI
+tags:
+  - LLM
+  - Context Engineering
+  - AI Agent
+  - Markdown
+featuredImage: feature-image.png
+status: published
 ---
-
 If you code with AI tools like Cursor or ChatGPT, you've noticed something. They love Markdown.
 
 Ask for a fix? You get a code block. Ask for a summary? You get bullet points. Even complex charts come as text.

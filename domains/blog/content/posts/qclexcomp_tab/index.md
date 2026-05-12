@@ -19,6 +19,7 @@ tags:
   - quick-action-button
   - salesforce
 featuredImage: images/featureimage_lcqc-1.png
+status: published
 ---
 Most of us might have opened a lightning component from a quick action button by embedding the component in the quick action. Its a nice feature that helped us to pop up UI elements from a record page. However the component was appearing in a modal. In this blog, lets try and see how we can manage to show the component in a new tab.
 

@@ -18,6 +18,7 @@ tags:
   - sfdc
   - this
 featuredImage: images/auras-helper-equivalent-in-lwc.png
+status: published
 ---
 Back in time when we were creating Lightning components on aura framework, developers were hooked on with the helper methods. We all were told that all the reusable code should go into helper methods. However when we moved to LWC development, with no helper javscript file, where do we put all these reusable code? Let is take a look.
 

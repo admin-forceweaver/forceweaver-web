@@ -18,6 +18,7 @@ tags:
   - task-set-users
   - tasks
 featuredImage: images/assigntaskqueue_feature.png
+status: published
 ---
 During my salesforce journey, I’ve come across multiple scenarios where customer provides a way of open work culture within a team and with salesforce it was always easy with the use of queues. For e.g., A Case record when assigned to a queue can bring in an entire team’s attention and can manage efficiently. I once got a requirement of having a task to be assigned to a queue. Background is that the task was created whenever a new customer was onboarded, and the service team wanted to send out an email on welcome/onboarding formalities. The task was assigned to a specific person and it resulted in missed tasks when the task assignee was unavailable for some reason.
 

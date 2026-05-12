@@ -9,6 +9,7 @@ excerpt: >-
 category: Development
 tags: []
 featuredImage: images/dynamicaction_featureimage.png
+status: published
 ---
 Salesforce database is a topic that is not much discussed between the trailblazers. The reason for this could be that salesforce being a SaaS application, will maintain the database on its own and nobody really bothered to go in detail to understand how the data is stored and how access to that data is controlled. In this guide, you will understand the details of the Database Architecture a little bit in depth to understand where the data is stored and how the data access is provided.
 

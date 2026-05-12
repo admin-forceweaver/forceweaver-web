@@ -30,6 +30,7 @@ tags:
   - showtoastevent
   - without-aura
 featuredImage: images/lwc_headless_feature.png
+status: published
 ---
 A headless quick action executes custom code in a Lightning web component. Unlike a screen action, a headless action doesn’t open a modal window. So in short, if you want to do some custom logic via apex to run by click of a quick action button we can use headless actions in LWC.
 

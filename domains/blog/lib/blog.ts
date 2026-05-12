@@ -82,6 +82,19 @@ export interface BlogPostMetadata {
   published: boolean;
 }
 
+/** Whether the post is visible on the public site (index, detail, sitemap). */
+function isPublicPost(data: Record<string, unknown>): boolean {
+  const statusVal = data.status;
+  if (statusVal !== undefined && statusVal !== null) {
+    const s = String(statusVal).trim().toLowerCase();
+    if (s === 'published') return true;
+    if (s === 'draft') return false;
+    if (s !== '') return false;
+  }
+  if (data.published === false) return false;
+  return true;
+}
+
 // Calculate reading time (average 200 words per minute)
 function calculateReadingTime(content: string): number {
   const wordsPerMinute = 200;
@@ -132,6 +145,8 @@ export function getAllPosts(): BlogPostMetadata[] {
           featuredImage = `/blog/images/${slug}/${featuredImage}`;
         }
 
+        const published = isPublicPost(data as Record<string, unknown>);
+
         return {
           slug,
           title: data.title || 'Untitled',
@@ -142,7 +157,7 @@ export function getAllPosts(): BlogPostMetadata[] {
           category: data.category || 'General',
           featuredImage,
           readingTime: calculateReadingTime(content),
-          published: data.published !== false,
+          published,
         } as BlogPostMetadata;
       })
       .filter(post => post.published)
@@ -165,7 +180,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
-    if (data.published === false) {
+    if (!isPublicPost(data as Record<string, unknown>)) {
       return null;
     }
 

@@ -16,6 +16,7 @@ tags:
   - lwc
   - multiple
 featuredImage: images/lwc_chartjs.png
+status: published
 ---
 Data visualization is the graphical representation of information and data. By using visual elements like charts, graphs, and maps, data visualization tools provide an accessible way to see and understand trends, outliers, and patterns in data. Executives and Managers in any firm are interested to visualize the data in a way that would provide insights to them. One such visualization library that is very popular and open source is ChartJS. It is a simple yet flexible JavaScript charting for designers & developers. In this blog, let us take a look on how we could use ChartJs to draw charts on a lightning web component.
 

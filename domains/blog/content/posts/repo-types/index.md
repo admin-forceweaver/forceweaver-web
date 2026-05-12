@@ -1,13 +1,21 @@
 ---
-title: "Monorepo vs. Polyrepo for Multi-Stack Vibe Coding: A Developer’s Decision Framework"
-date: "2025-02-15"
-author: ""
-excerpt: "How AI agents are reshaping our approach to repository architecture."
-category: "AI"
-tags: ["Development", "AI", "Repo", "Vibe Coding", "Tools", "Git"]
-featuredImage: "feature-image.webp"
+title: >-
+  Monorepo vs. Polyrepo for Multi-Stack Vibe Coding: A Developer’s Decision
+  Framework
+date: '2025-02-15'
+author: ''
+excerpt: How AI agents are reshaping our approach to repository architecture.
+category: AI
+tags:
+  - Development
+  - AI
+  - Repo
+  - Vibe Coding
+  - Tools
+  - Git
+featuredImage: feature-image.webp
+status: published
 ---
-
 As a developer in 2025, you’ve probably experienced the magic of vibe coding — describing your application ideas in natural language and watching AI agents like Cursor or Cline transform them into working code. But when building multi-stack applications that span React frontends, Python backends, mobile apps, and various microservices, one critical architectural decision emerges: should you organize everything in a single monorepo or split it across multiple polyrepos?
 
 I recently found myself grappling with this exact question when I started building a new application. What began as a simple idea quickly evolved into a complex multi-stack project requiring a React web frontend, FastAPI backend, mobile app, and several supporting services. As I watched my AI coding assistant seamlessly navigate between different tech stacks to implement features, I realized something profound: the way I organized my code wasn’t just affecting my development workflow — it was fundamentally changing how effectively my AI tools could help me build.

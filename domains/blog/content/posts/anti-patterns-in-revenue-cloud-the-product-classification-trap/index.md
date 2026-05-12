@@ -1,13 +1,21 @@
 ---
-title: "Anti-Patterns in Revenue Cloud: The Product Classification Trap"
-date: "2026-05-11"
-author: ""
-excerpt: "How shared Product Classifications and CML exclude rules can lock the Advanced Configurator UI—and how to architect classifications so users never get stuck."
-category: "Revenue Cloud"
-tags: ["Salesforce", "Revenue Cloud", "CML", "Advanced Configurator", "Product Classification", "Best Practices"]
-featuredImage: "feature-image.webp"
+title: 'Anti-Patterns in Revenue Cloud: The Product Classification Trap'
+date: '2026-05-11'
+author: ''
+excerpt: >-
+  How shared Product Classifications and CML exclude rules can lock the Advanced
+  Configurator UI—and how to architect classifications so users never get stuck.
+category: Revenue Cloud
+tags:
+  - Salesforce
+  - Revenue Cloud
+  - CML
+  - Advanced Configurator
+  - Product Classification
+  - Best Practices
+featuredImage: feature-image.webp
+status: published
 ---
-
 In the Salesforce Revenue Cloud Advanced Configurator, there is a specific situation that can bring a configuration to a standstill. It occurs when a user triggers an error they cannot fix because the UI has disabled the necessary controls.
 
 As technical architects, we often treat Product Classifications as a way to group the products. Most of us overlook to the fact that those classifications also define the boundaries of your Constraint Modeling Language (CML) rules. If you are not careful with catalog architecture, you can create a **shared classification trap**: a deadlock where validation fails and the user cannot correct their selection.

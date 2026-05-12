@@ -15,6 +15,7 @@ tags:
   - lightning-community
   - salesforce-community
 featuredImage: images/casedeflection_feature.png
+status: published
 ---
 Now that you have built your customer community and customers are flowing into the community to view latest products, get help from community members, view knowledge articles etc. In a case to measure the community effectiveness, the community manager wants to generate reports on how well the articles are helping the customers. Community manager wants to see which articles help the customers the most, how many cases were stopped because the customer chose not to create it by seeing an article. To view these metrics, salesforce has a package: 'Salesforce Case Deflection Reporting Package for Lightning Communities'. Below is the link to the package on AppExchange. This package has dashboard that shows insights into how well the Contact Support Form and Case Deflection components actually deflect cases from being created in your Lightning communities.
 

@@ -1,13 +1,20 @@
 ---
-title: "Building a Secure Enterprise MCP Server with a Dual Architecture"
-date: "2025-08-10"
-author: ""
-excerpt: "How Forceweaver implements a dual-architecture MCP server to balance open integration with enterprise-grade security and intellectual property protection."
-category: "AI"
-tags: ["MCP", "Security", "Salesforce", "Architecture"]
-featuredImage: "feature-image.webp"
+title: Building a Secure Enterprise MCP Server with a Dual Architecture
+date: '2025-08-10'
+author: ''
+excerpt: >-
+  How Forceweaver implements a dual-architecture MCP server to balance open
+  integration with enterprise-grade security and intellectual property
+  protection.
+category: AI
+tags:
+  - MCP
+  - Security
+  - Salesforce
+  - Architecture
+featuredImage: feature-image.webp
+status: published
 ---
-
 ![Forceweaver MCP Architecture](1-architecture.webp)
 
 Forceweaver (conceptual) is an enterprise-grade MCP (Model Context Protocol) server designed to provide AI agents with secure health-checking tools for Salesforce Revenue Cloud. While MCP enables powerful integration between AI agents and external services, this capability introduces significant security risks. This document outlines how Forceweaver was built to address these threats using a dual-architecture design that protects intellectual property while ensuring enterprise-grade security.

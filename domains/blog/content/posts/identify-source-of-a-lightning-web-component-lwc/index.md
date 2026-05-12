@@ -14,6 +14,7 @@ tags:
   - placed
   - source
 featuredImage: images/lwcsource_feature-image.pmg_.png
+status: published
 ---
 ###### Scenario
 

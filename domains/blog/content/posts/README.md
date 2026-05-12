@@ -36,6 +36,7 @@ excerpt: "A brief summary of the blog post (1-2 sentences)"
 category: "Category Name"
 tags: ["Tag1", "Tag2", "Tag3"]
 featuredImage: "feature-image.webp"
+status: published
 ---
 
 Your content here...
@@ -90,6 +91,8 @@ posts/
 | `category` | No | Post category (defaults to "General") | "Tutorial" |
 | `tags` | No | Array of tags | ["Salesforce", "CPQ"] |
 | `featuredImage` | No | Relative path to featured image | "hero.webp" |
+| `status` | No | `published` (visible on the site) or `draft` (repo only, hidden from blog index and post URLs). If omitted, the post is public unless legacy `published: false` is set. | `published` |
+| `published` | No | **Legacy:** set to `false` to hide the post (same effect as `status: draft`). Ignored when `status` is set to a non-empty value. | `false` |
 
 ## Categories
 
@@ -203,3 +206,4 @@ Visit `http://localhost:3000/blog` to see your posts.
 - Make sure the file is named exactly `index.md`
 - Check that the folder name is URL-friendly (lowercase, dashes)
 - Verify frontmatter is properly formatted with `---` delimiters
+- If the post should stay in the repo but not on the public site, set `status: draft` (or legacy `published: false`). Use `status: published` or omit `status` for a live post.

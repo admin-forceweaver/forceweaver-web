@@ -22,6 +22,7 @@ tags:
   - salesforce
   - sfdc
 featuredImage: images/ado-export_auto_feature.png
+status: published
 ---
 Data export has been a hot topic ever since the inception of salesforce and there are a lot of tools that help you to automate this task. There are tools available to automate the process as well. Probably these tools all generate either on a local drive or even might be cloud servers. How about the data extract that could be available on your repo! Yes, you heard it right. Its possible. It has been possible since long but then after Azure DevOps (ADO) pipelines popular in the market this has become much easier to implement. The same setup that I’ll be explaining could be modified a bit to run it from Docker or Jenkins as well. However, lets focus our discussion on setting up this task on ADO.
 

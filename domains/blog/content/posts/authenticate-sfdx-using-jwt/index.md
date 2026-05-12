@@ -17,6 +17,7 @@ tags:
   - sfdx-authenticate
   - sfdx-jwt
 featuredImage: images/ath_sfdx_jwt_feature-1.png
+status: published
 ---
 Being late into understanding SFDX, I wasn’t sure what were its capabilities and on a normal development project, I don't think there is enough opportunity to work with SFDX. Luckily, I got a chance to work with few of the DevOps setup for my client and got hands on to the Salesforce Developer Experience – the SFDX.
 

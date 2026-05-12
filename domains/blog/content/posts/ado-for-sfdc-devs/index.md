@@ -15,6 +15,7 @@ tags:
   - salesforce
   - sfdc
 featuredImage: images/deployment_ado_sfdc_feature.png
+status: published
 ---
 #### Introduction
 

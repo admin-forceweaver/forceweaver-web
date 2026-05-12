@@ -1,13 +1,21 @@
 ---
-title: "LMS Race Conditions and How to Avoid Them"
-date: "2025-02-15"
-author: ""
-excerpt: "A technical breakdown of why Lightning Message Service (LMS) race conditions occur in Salesforce and how to avoid them by deferring event publication, with a specific example in Revenue Cloud."
-category: "Development"
-tags: ["LMS", "LWC", "Race Condition", "Salesforce", "Development"]
-featuredImage: "feature-image.png"
+title: LMS Race Conditions and How to Avoid Them
+date: '2025-02-15'
+author: ''
+excerpt: >-
+  A technical breakdown of why Lightning Message Service (LMS) race conditions
+  occur in Salesforce and how to avoid them by deferring event publication, with
+  a specific example in Revenue Cloud.
+category: Development
+tags:
+  - LMS
+  - LWC
+  - Race Condition
+  - Salesforce
+  - Development
+featuredImage: feature-image.png
+status: published
 ---
-
 I recently integrated a third-party configurator (an LWC) inside Salesforce’s first-party configurator to manage complex product attribute updates. My initial approach was straightforward: whenever the configurator fired an event (`valueChanged`), my LWC immediately responded with another event. However, I soon encountered unexplained errors. After investigating further, I discovered these were LMS race conditions—and the fix was to defer event publication until the first-party configurator’s internal processes completed.
 
 This post provides a technical breakdown of why Lightning Messaging Service (LMS) race conditions happen and how to avoid them, with a clear example using Revenue Cloud. We will cover:
