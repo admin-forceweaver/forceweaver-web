@@ -7,8 +7,65 @@ interface CookieSettingsProps {
   onClose: () => void;
 }
 
+function ToggleSwitch({
+  pressed,
+  onClick,
+  disabled,
+  ariaLabel,
+}: {
+  pressed: boolean;
+  onClick?: () => void;
+  disabled?: boolean;
+  ariaLabel: string;
+}) {
+  return (
+    <button
+      type="button"
+      role="switch"
+      aria-checked={pressed}
+      aria-label={ariaLabel}
+      disabled={disabled}
+      onClick={disabled ? undefined : onClick}
+      className={`relative h-7 w-12 shrink-0 rounded-full transition-colors ${
+        disabled ? 'cursor-default opacity-90' : 'cursor-pointer'
+      } ${pressed ? 'bg-violet-600' : 'bg-gray-300'}`}
+    >
+      <span
+        className={`pointer-events-none absolute left-1 top-1 block h-5 w-5 rounded-full bg-white shadow transition-transform ${
+          pressed ? 'translate-x-5' : 'translate-x-0'
+        }`}
+      />
+    </button>
+  );
+}
+
+function PreferenceCard({
+  title,
+  description,
+  footer,
+  trailing,
+}: {
+  title: string;
+  description: string;
+  footer?: string;
+  trailing: React.ReactNode;
+}) {
+  return (
+    <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+      <div className="flex items-start justify-between gap-4">
+        <div className="min-w-0 flex-1">
+          <h3 className="text-base font-bold text-gray-900">{title}</h3>
+          <p className="mt-1 text-sm leading-relaxed text-gray-600">{description}</p>
+          {footer ? <p className="mt-2 text-xs text-gray-500">{footer}</p> : null}
+        </div>
+        <div className="shrink-0 pt-0.5">{trailing}</div>
+      </div>
+    </div>
+  );
+}
+
 export function CookieSettings({ onClose }: CookieSettingsProps) {
-  const { consent, updateConsent } = useConsent();
+  const { consent, updateConsent, acceptAll } = useConsent();
   const [settings, setSettings] = useState({
     analytics: consent?.analytics ?? false,
     marketing: consent?.marketing ?? false,
@@ -26,7 +83,7 @@ export function CookieSettings({ onClose }: CookieSettingsProps) {
   }, [consent]);
 
   const handleToggle = (category: keyof typeof settings) => {
-    setSettings(prev => ({
+    setSettings((prev) => ({
       ...prev,
       [category]: !prev[category],
     }));
@@ -37,222 +94,122 @@ export function CookieSettings({ onClose }: CookieSettingsProps) {
     onClose();
   };
 
-  const handleAcceptAll = () => {
-    setSettings({
-      analytics: true,
-      marketing: true,
-      preferences: true,
-    });
-  };
-
-  const handleDeclineAll = () => {
-    setSettings({
-      analytics: false,
-      marketing: false,
-      preferences: false,
-    });
+  const handleAllowAll = async () => {
+    await acceptAll();
+    onClose();
   };
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+      className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 p-4"
       role="dialog"
       aria-labelledby="cookie-settings-title"
       aria-modal="true"
       onClick={onClose}
     >
-      <div 
-        className="bg-white rounded-lg shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto"
+      <div
+        className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-lg bg-white shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
-        <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 rounded-t-lg">
-          <div className="flex items-center justify-between">
-            <h2
-              id="cookie-settings-title"
-              className="text-2xl font-bold text-gray-900"
-            >
-              Cookie Preferences
-            </h2>
-            <button
-              onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 transition-colors"
-              aria-label="Close cookie settings"
-            >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
+        <div className="flex items-start justify-between border-b border-gray-100 px-6 py-5">
+          <h2 id="cookie-settings-title" className="pr-8 text-lg font-bold text-gray-900">
+            Privacy preference center
+          </h2>
+          <button
+            type="button"
+            onClick={onClose}
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded border border-gray-200 bg-gray-50 text-gray-600 transition-colors hover:bg-gray-100"
+            aria-label="Close cookie settings"
+          >
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
 
-        {/* Content */}
-        <div className="p-6 space-y-6">
-          {/* Essential Cookies */}
-          <div className="space-y-3">
-            <div className="flex items-start justify-between">
-              <div className="flex-1">
-                <h3 className="text-lg font-semibold text-gray-900">
-                  Essential Cookies
-                </h3>
-                <p className="text-sm text-gray-600 mt-1">
-                  These cookies are necessary for the website to function and cannot be disabled.
-                </p>
-              </div>
-              <div className="ml-4">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
-                  Always Active
-                </span>
-              </div>
-            </div>
-            <div className="pl-4 text-sm text-gray-500">
-              <p>Includes: Authentication, session management, security</p>
-            </div>
-          </div>
+        <div className="space-y-5 px-6 py-5">
+          <p className="text-sm leading-relaxed text-gray-600">
+            We use strictly necessary cookies to run the service. With your permission, we also use first-party
+            analytics to understand product usage. See our{' '}
+            <a
+              href="/cookie-policy"
+              className="font-medium text-gray-900 underline underline-offset-2 hover:text-gray-700"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Cookie Policy
+            </a>{' '}
+            for details.
+          </p>
 
-          {/* Analytics Cookies */}
-          <div className="space-y-3 pt-6 border-t">
-            <div className="flex items-start justify-between">
-              <div className="flex-1">
-                <h3 className="text-lg font-semibold text-gray-900">
-                  Analytics Cookies
-                </h3>
-                <p className="text-sm text-gray-600 mt-1">
-                  Help us understand how visitors interact with our website by collecting anonymous information.
-                </p>
-              </div>
-              <div className="ml-4">
-                <button
+          <button
+            type="button"
+            onClick={handleAllowAll}
+            className="w-full rounded-lg bg-gray-900 py-3 text-sm font-semibold text-white transition-colors hover:bg-gray-800"
+          >
+            Allow all
+          </button>
+
+          <h3 className="text-base font-bold text-gray-900">Manage consent preferences</h3>
+
+          <div className="space-y-4">
+            <PreferenceCard
+              title="Strictly necessary"
+              description="Required for authentication, security, and core application features. Always active."
+              trailing={<ToggleSwitch pressed disabled ariaLabel="Strictly necessary cookies always on" />}
+            />
+
+            <PreferenceCard
+              title="Product analytics"
+              description="First-party analytics (PostHog) for usage insights. Autocapture and events run only if you enable this category."
+              footer="Includes: PostHog product analytics, usage statistics"
+              trailing={
+                <ToggleSwitch
+                  pressed={settings.analytics}
                   onClick={() => handleToggle('analytics')}
-                  className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                    settings.analytics ? 'bg-blue-600' : 'bg-gray-200'
-                  }`}
-                  role="switch"
-                  aria-checked={settings.analytics}
-                  aria-label="Toggle analytics cookies"
-                >
-                  <span
-                    className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                      settings.analytics ? 'translate-x-6' : 'translate-x-1'
-                    }`}
-                  />
-                </button>
-              </div>
-            </div>
-            <div className="pl-4 text-sm text-gray-500">
-              <p>Includes: PostHog product analytics, usage statistics</p>
-            </div>
-          </div>
+                  ariaLabel="Toggle product analytics cookies"
+                />
+              }
+            />
 
-          {/* Marketing Cookies */}
-          <div className="space-y-3 pt-6 border-t">
-            <div className="flex items-start justify-between">
-              <div className="flex-1">
-                <h3 className="text-lg font-semibold text-gray-900">
-                  Marketing Cookies
-                </h3>
-                <p className="text-sm text-gray-600 mt-1">
-                  Used to track visitors across websites to display relevant advertisements.
-                </p>
-              </div>
-              <div className="ml-4">
-                <button
+            <PreferenceCard
+              title="Marketing cookies"
+              description="Used to track visitors across websites to display relevant advertisements."
+              footer="Currently not used"
+              trailing={
+                <ToggleSwitch
+                  pressed={settings.marketing}
                   onClick={() => handleToggle('marketing')}
-                  className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                    settings.marketing ? 'bg-blue-600' : 'bg-gray-200'
-                  }`}
-                  role="switch"
-                  aria-checked={settings.marketing}
-                  aria-label="Toggle marketing cookies"
-                >
-                  <span
-                    className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                      settings.marketing ? 'translate-x-6' : 'translate-x-1'
-                    }`}
-                  />
-                </button>
-              </div>
-            </div>
-            <div className="pl-4 text-sm text-gray-500">
-              <p>Currently not used</p>
-            </div>
-          </div>
+                  ariaLabel="Toggle marketing cookies"
+                />
+              }
+            />
 
-          {/* Preference Cookies */}
-          <div className="space-y-3 pt-6 border-t">
-            <div className="flex items-start justify-between">
-              <div className="flex-1">
-                <h3 className="text-lg font-semibold text-gray-900">
-                  Preference Cookies
-                </h3>
-                <p className="text-sm text-gray-600 mt-1">
-                  Remember your preferences and settings for a personalized experience.
-                </p>
-              </div>
-              <div className="ml-4">
-                <button
+            <PreferenceCard
+              title="Preference cookies"
+              description="Remember your preferences and settings for a personalized experience."
+              footer="Includes: Theme, language, UI preferences"
+              trailing={
+                <ToggleSwitch
+                  pressed={settings.preferences}
                   onClick={() => handleToggle('preferences')}
-                  className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                    settings.preferences ? 'bg-blue-600' : 'bg-gray-200'
-                  }`}
-                  role="switch"
-                  aria-checked={settings.preferences}
-                  aria-label="Toggle preference cookies"
-                >
-                  <span
-                    className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                      settings.preferences ? 'translate-x-6' : 'translate-x-1'
-                    }`}
-                  />
-                </button>
-              </div>
-            </div>
-            <div className="pl-4 text-sm text-gray-500">
-              <p>Includes: Theme, language, UI preferences</p>
-            </div>
-          </div>
-
-          {/* Links */}
-          <div className="pt-6 border-t">
-            <p className="text-sm text-gray-600">
-              For more information, please read our{' '}
-              <a href="/cookie-policy" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
-                Cookie Policy
-              </a>{' '}
-              and{' '}
-              <a href="/privacy-policy" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
-                Privacy Policy
-              </a>
-              .
-            </p>
+                  ariaLabel="Toggle preference cookies"
+                />
+              }
+            />
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="sticky bottom-0 bg-gray-50 border-t border-gray-200 px-6 py-4 rounded-b-lg">
-          <div className="flex flex-col sm:flex-row gap-3 justify-end">
-            <button
-              onClick={handleDeclineAll}
-              className="px-6 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 rounded-lg transition-colors"
-            >
-              Decline All
-            </button>
-            <button
-              onClick={handleAcceptAll}
-              className="px-6 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 rounded-lg transition-colors"
-            >
-              Accept All
-            </button>
-            <button
-              onClick={handleSave}
-              className="px-6 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
-            >
-              Save Preferences
-            </button>
-          </div>
+        <div className="border-t border-gray-100 px-6 py-5">
+          <button
+            type="button"
+            onClick={handleSave}
+            className="w-full rounded-lg bg-gray-900 py-3 text-sm font-semibold text-white transition-colors hover:bg-gray-800"
+          >
+            Confirm my choices
+          </button>
         </div>
       </div>
     </div>
   );
 }
-

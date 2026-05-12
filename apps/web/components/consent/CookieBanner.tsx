@@ -10,7 +10,6 @@ export function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Show banner if user hasn't decided
     if (!hasDecided) {
       setIsVisible(true);
     }
@@ -25,100 +24,67 @@ export function CookieBanner() {
     setIsVisible(false);
   };
 
-  const handleDeclineAll = async () => {
+  const handleDismissBanner = async () => {
     await declineAll();
-    setIsVisible(false);
-  };
-
-  const handleOpenSettings = () => {
-    setShowSettings(true);
-  };
-
-  const handleCloseSettings = () => {
-    setShowSettings(false);
     setIsVisible(false);
   };
 
   return (
     <>
       <div
-        className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-2xl"
+        className="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 bg-[#f5f5f5] shadow-[0_-4px_24px_rgba(0,0,0,0.08)]"
         role="dialog"
         aria-labelledby="cookie-banner-title"
         aria-describedby="cookie-banner-description"
       >
-        <div className="max-w-7xl mx-auto p-6">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-            <div className="flex-1">
-              <h3
-                id="cookie-banner-title"
-                className="text-lg font-semibold text-gray-900 mb-2"
-              >
-                We value your privacy
-              </h3>
-              <p
-                id="cookie-banner-description"
-                className="text-sm text-gray-600"
-              >
-                We use cookies to enhance your browsing experience and analyze our traffic.
-                By clicking &quot;Accept All&quot;, you consent to our use of cookies.{' '}
-                <a
-                  href="/cookie-policy"
-                  className="text-blue-600 hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Learn more
-                </a>
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-              <button
-                onClick={handleDeclineAll}
-                className="px-6 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
-                aria-label="Decline all optional cookies"
-              >
-                Essential Only
-              </button>
-              
-              <button
-                onClick={handleOpenSettings}
-                className="px-6 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 rounded-lg transition-colors"
-                aria-label="Customize cookie preferences"
-              >
-                Customize
-              </button>
-              
-              <button
-                onClick={handleAcceptAll}
-                className="px-6 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
-                aria-label="Accept all cookies"
-              >
-                Accept All
-              </button>
-            </div>
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 p-5 md:flex-row md:items-center md:justify-between md:gap-6">
+          <div className="min-w-0 flex-1 pr-0 md:pr-4">
+            <h3 id="cookie-banner-title" className="mb-2 text-base font-bold text-gray-900">
+              Cookies &amp; analytics
+            </h3>
+            <p id="cookie-banner-description" className="text-sm leading-relaxed text-gray-800">
+              We use strictly necessary cookies to operate the application. If you accept all cookies, we also
+              enable first-party product analytics to understand usage. You can open cookie settings to choose
+              optional categories. See our{' '}
+              <a href="/cookie-policy" className="font-medium text-gray-900 underline underline-offset-2 hover:text-gray-700">
+                Cookie Policy
+              </a>{' '}
+              for details.
+            </p>
           </div>
 
-          {/* CCPA Disclosure */}
-          <div className="mt-4 pt-4 border-t border-gray-100">
-            <p className="text-xs text-gray-500">
-              California residents: We do not sell your personal information.{' '}
-              <a
-                href="/privacy-policy#ccpa"
-                className="text-blue-600 hover:underline"
-              >
-                Learn about your privacy rights
-              </a>
-            </p>
+          <div className="flex shrink-0 flex-wrap items-center justify-end gap-3 md:flex-nowrap">
+            <button
+              type="button"
+              onClick={() => setShowSettings(true)}
+              className="rounded border border-gray-900 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 transition-colors hover:bg-gray-50"
+              aria-label="Open cookie settings"
+            >
+              Cookies settings
+            </button>
+            <button
+              type="button"
+              onClick={handleAcceptAll}
+              className="rounded bg-gray-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-gray-800"
+              aria-label="Accept all cookies"
+            >
+              Accept all cookies
+            </button>
+            <button
+              type="button"
+              onClick={handleDismissBanner}
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded border border-gray-300 bg-gray-100 text-gray-700 transition-colors hover:bg-gray-200"
+              aria-label="Dismiss cookie banner"
+            >
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
 
-      {showSettings && (
-        <CookieSettings onClose={handleCloseSettings} />
-      )}
+      {showSettings && <CookieSettings onClose={() => setShowSettings(false)} />}
     </>
   );
 }
-
