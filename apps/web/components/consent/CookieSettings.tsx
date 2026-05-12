@@ -130,7 +130,7 @@ export function CookieSettings({ onClose }: CookieSettingsProps) {
   };
 
   const drawerTransform =
-    leaving || !panelIn ? 'translate-x-full' : 'translate-x-0';
+    leaving || !panelIn ? '-translate-x-full' : 'translate-x-0';
 
   return (
     <div className="fixed inset-0 z-[60]" role="presentation">
@@ -144,7 +144,7 @@ export function CookieSettings({ onClose }: CookieSettingsProps) {
       />
 
       <div
-        className={`absolute inset-y-0 right-0 z-[61] flex h-full max-h-dvh w-full max-w-md flex-col bg-white shadow-[-8px_0_32px_rgba(0,0,0,0.12)] transition-transform duration-300 ease-out ${drawerTransform}`}
+        className={`absolute inset-y-0 left-0 z-[61] flex h-full max-h-dvh w-full max-w-md flex-col bg-white shadow-[8px_0_32px_rgba(0,0,0,0.12)] transition-transform duration-300 ease-out ${drawerTransform}`}
         role="dialog"
         aria-labelledby="cookie-settings-title"
         aria-modal="true"
