@@ -140,7 +140,7 @@ export function CookieSettings({ onClose }: CookieSettingsProps) {
               </div>
             </div>
             <div className="pl-4 text-sm text-gray-500">
-              <p>Includes: Vercel Analytics, usage statistics</p>
+              <p>Includes: PostHog product analytics, usage statistics</p>
             </div>
           </div>
 

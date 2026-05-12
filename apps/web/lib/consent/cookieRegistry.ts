@@ -40,20 +40,24 @@ export const COOKIE_REGISTRY: Record<string, CookieDefinition> = {
   },
 
   // Analytics Cookies (Consent required)
-  'forceweaver-analytics': {
-    name: 'forceweaver-analytics',
+  // PostHog writes these only after the user grants optional analytics consent.
+  // Names are based on the project token; we list the canonical pattern.
+  'ph_<token>_posthog': {
+    name: 'ph_<token>_posthog',
     category: 'analytics',
-    purpose: 'Tracks anonymous usage data to improve the website',
+    purpose:
+      'Stores an anonymous distinct_id, session id, and feature flag cache used by PostHog product analytics',
     duration: '13 months',
-    provider: 'Rev Cloud Blueprint',
+    provider: 'PostHog',
     requiresConsent: true,
   },
-  '_vercel_analytics_id': {
-    name: '_vercel_analytics_id',
+  '__ph_opt_in_out_<token>': {
+    name: '__ph_opt_in_out_<token>',
     category: 'analytics',
-    purpose: 'Anonymous visitor identification for traffic analysis',
+    purpose:
+      'Remembers your opt-in or opt-out choice so PostHog respects consent across visits',
     duration: '13 months',
-    provider: 'Vercel Analytics',
+    provider: 'PostHog',
     requiresConsent: true,
   },
 

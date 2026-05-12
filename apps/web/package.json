@@ -10,11 +10,11 @@
   },
   "dependencies": {
     "@types/js-cookie": "^3.0.6",
-    "@vercel/analytics": "^1.5.0",
     "gray-matter": "^4.0.3",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.545.0",
     "next": "15.5.18",
+    "posthog-js": "^1.373.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "rehype-highlight": "^7.0.2",

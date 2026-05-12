@@ -22,6 +22,7 @@ function isAssetOrNext(pathname: string): boolean {
   return (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
+    pathname.startsWith('/ingest') ||
     pathname === '/favicon.ico' ||
     pathname === '/robots.txt' ||
     /\.[a-zA-Z0-9]{2,8}$/.test(pathname)

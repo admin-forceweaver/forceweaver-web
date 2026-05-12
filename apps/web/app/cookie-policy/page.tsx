@@ -189,8 +189,8 @@ export default function CookiePolicyPage() {
               </a>)
             </li>
             <li>
-              <strong>Vercel Analytics:</strong> Website traffic analysis
-              {' '}(<a href="https://vercel.com/legal/privacy-policy" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
+              <strong>PostHog:</strong> Product analytics for understanding how visitors use ForceWeaver. PostHog cookies are only set after you opt in to analytics cookies. Requests are routed through a first-party <code>/ingest</code> proxy on ForceWeaver, and the same consent decision applies to <code>forceweaver.com</code>, <code>blog.forceweaver.com</code>, and <code>revsnap.forceweaver.com</code>.
+              {' '}(<a href="https://posthog.com/privacy" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
                 Privacy Policy
               </a>)
             </li>

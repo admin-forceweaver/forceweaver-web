@@ -1,32 +1,47 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
+import { useEffect, useRef } from 'react';
 import { useConsent } from './ConsentProvider';
+import { initPosthogBrowser } from '@/lib/analytics/initPosthogBrowser';
 
+/**
+ * Bridges the cookie consent state to the PostHog browser SDK.
+ *
+ * Renders nothing visible: PostHog is initialized lazily in the browser, then
+ * opted in or out as the user's `analytics` consent toggle changes. When the
+ * PostHog token is missing the SDK never initializes, so no network requests
+ * or cookies are produced.
+ */
 export function Analytics() {
-  const { hasConsent } = useConsent();
-  const [canTrack, setCanTrack] = useState(false);
+  const { consent } = useConsent();
+  const analyticsAllowed = consent?.analytics === true;
+  const consentEventSentRef = useRef(false);
 
   useEffect(() => {
-    // Check consent status
-    const analyticsConsent = hasConsent('analytics');
-    setCanTrack(analyticsConsent);
+    const instance = initPosthogBrowser();
+    if (!instance) {
+      return;
+    }
 
-    // Clean up tracking if consent is withdrawn
-    return () => {
-      if (!analyticsConsent && canTrack) {
-        console.log('[Analytics] Consent withdrawn, stopping analytics');
-        // Additional cleanup if needed
+    if (analyticsAllowed) {
+      if (instance.has_opted_out_capturing()) {
+        instance.opt_in_capturing();
       }
-    };
-  }, [hasConsent, canTrack]);
+      if (!consentEventSentRef.current) {
+        consentEventSentRef.current = true;
+        try {
+          instance.capture('analytics_consent_accepted');
+        } catch {
+          // Capture is best-effort; never throw from the consent bridge.
+        }
+      }
+    } else {
+      consentEventSentRef.current = false;
+      if (!instance.has_opted_out_capturing()) {
+        instance.opt_out_capturing();
+      }
+    }
+  }, [analyticsAllowed]);
 
-  // Only render analytics if user has consented
-  if (!canTrack) {
-    return null;
-  }
-
-  return <VercelAnalytics />;
+  return null;
 }
-
