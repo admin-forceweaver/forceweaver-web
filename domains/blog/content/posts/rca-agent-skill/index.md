@@ -15,9 +15,9 @@ tags:
   - Diagnostics
   - Open Source
 featuredImage: feature-Image.png
-status: draft
+status: published
 ---
-If you work on Salesforce Revenue Cloud, you already know the hardest part is rarely "what is the final number?"  
+If you work on Salesforce Revenue Cloud, you already know the hardest part is rarely "How does this field get set with a price?"  
 The hardest part is proving where that number came from.
 
 You're often tracing a single field across:
